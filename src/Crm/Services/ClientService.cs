@@ -9,7 +9,7 @@ public sealed class ClientService
         string middleName,
         short age,
         string passportNumber,
-        string gender
+        Gender gender
     )
     {
         // TODO: Validate input parameters.

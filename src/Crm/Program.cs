@@ -14,7 +14,7 @@ void CreateClient()
     string middleName = Console.ReadLine();
     short age = short.Parse(Console.ReadLine());
     string passportNumber = Console.ReadLine();
-    string gender = Console.ReadLine();
+    Gender gender = (Gender)short.Parse(Console.ReadLine());
 
     Client newClient = clientService.CreateClient(
         firstName,
