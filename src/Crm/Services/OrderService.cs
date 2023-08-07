@@ -11,7 +11,6 @@ public sealed class OrderService
         string description,
         int price,
         DateTime orderData,
-        Delivery deliveryType,
         string addres
     )
     {
@@ -21,7 +20,6 @@ public sealed class OrderService
             Description = description,
             Price = price,
             OrderData = orderData,
-            DeliveryType = deliveryType,
             Addres =addres
         };
     }
