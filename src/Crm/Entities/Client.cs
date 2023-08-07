@@ -1,4 +1,4 @@
-namespace Crm;
+namespace Crm.Entities;
 
 public sealed class Client
 {
