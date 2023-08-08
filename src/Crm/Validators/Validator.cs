@@ -4,7 +4,7 @@ namespace Crm.Validator;
 
 
 
-public static class ClientValidator
+public static class Validator
 {
     /// <summary>
     /// Checks for empty, null and whiteSpace for inputed STR
@@ -58,5 +58,59 @@ public static class ClientValidator
 
         return true;
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="valStr"></param>
+    /// <param name="outVal"></param>
+    /// <returns></returns>
+     public static bool IsValidDecimal(string? valStr, out decimal outVal)
+    {
+        if (!decimal.TryParse(valStr, out outVal))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Checking for valid inputed date value
+    /// </summary>
+    /// <param name="dateString"></param>
+    /// <param name="date"></param>
+    /// <returns></returns>
+    public static bool IsValidDate(string? dateString, out DateTime date)
+    {
+        if (!DateTime.TryParse(dateString, out date))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Chdecking for valid inputed Delivery value
+    /// </summary>
+    /// <param name="deliverTypeString"></param>
+    /// <param name="deliverTypeNumber"></param>
+    /// <returns></returns>
+    public static bool IsValidDeliverType(string? deliverTypeString, out short deliverTypeNumber)
+    {
+        if (!short.TryParse(deliverTypeString, out deliverTypeNumber))
+        {
+            return false;
+        }
+
+        if (!deliverTypeString.Equals("1") & !deliverTypeString.Equals("2") & !deliverTypeString.Equals("3"))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     
 }
