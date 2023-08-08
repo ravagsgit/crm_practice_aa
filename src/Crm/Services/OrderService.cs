@@ -10,6 +10,7 @@ public sealed class OrderService
         int orderId,
         string description,
         int price,
+        Delivery delivery,
         DateTime orderData,
         string addres
     )
@@ -19,8 +20,9 @@ public sealed class OrderService
             OrderId = orderId,
             Description = description,
             Price = price,
-            OrderData = orderData,
-            Addres =addres
+            DeliveryType = delivery,
+            OrderDate = orderData,
+            Address =addres
         };
     }
 }
