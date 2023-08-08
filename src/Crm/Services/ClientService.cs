@@ -1,6 +1,6 @@
-using Crm.Services;
 using Crm.Entities;
 
+namespace Crm.Services;
 public sealed class ClientService
 {
     public Client CreateClient(
@@ -9,7 +9,7 @@ public sealed class ClientService
         string middleName,
         short age,
         string passportNumber,
-        string gender
+        Gender gender
     )
     {
         // TODO: Validate input parameters.
