@@ -2,10 +2,12 @@
 using Crm.Services;
 
 ClientService clientService = new();
-CreateClient();
-
 OrderService orderService = new();
-CreateOrder();
+
+Console.WriteLine("Hello, you can input next command: \n\t1 - for creating Clint; \n\t2 - for creating Order;");
+int iputedCmdNum;
+
+
 
 void CreateClient()
 {
@@ -46,3 +48,8 @@ void CreateOrder()
             );
     
         }
+
+void CheckInputValue()
+{
+    
+}
