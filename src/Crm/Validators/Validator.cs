@@ -60,7 +60,7 @@ public static class Validator
     }
 
     /// <summary>
-    /// 
+    /// For checking decimal values
     /// </summary>
     /// <param name="valStr"></param>
     /// <param name="outVal"></param>
@@ -68,6 +68,22 @@ public static class Validator
      public static bool IsValidDecimal(string? valStr, out decimal outVal)
     {
         if (!decimal.TryParse(valStr, out outVal))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// For checking int values
+    /// </summary>
+    /// <param name="valStr"></param>
+    /// <param name="outVal"></param>
+    /// <returns></returns>
+     public static bool IsValidInt(string? valStr, out int outVal)
+    {
+        if (!int.TryParse(valStr, out outVal))
         {
             return false;
         }
