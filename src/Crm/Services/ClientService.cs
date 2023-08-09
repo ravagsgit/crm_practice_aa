@@ -14,7 +14,7 @@ public sealed class ClientService
             MiddleName = clientInfo.MiddleName,
             Age = clientInfo.Age,
             PassportNumber = clientInfo.PassportNumber,
-            Gender = clientInfo.Gender
+            Gender = clientInfo.ClientGender
         };
     }   
 }

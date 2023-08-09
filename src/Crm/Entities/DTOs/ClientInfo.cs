@@ -7,5 +7,5 @@ public readonly struct ClientInfo
     public string? MiddleName { get; init; }
     public short Age { get; init; }
     public string PassportNumber { get; init; }
-    public Gender Gender { get; init; }
+    public Gender ClientGender { get; init; }
 }

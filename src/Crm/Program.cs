@@ -142,8 +142,8 @@ Order CreateOrder()
     }
 
     PrintMsg("Price", "it must be dig");
-    int price;
-    while(!Validator.IsValidInt(Console.ReadLine(), out price))
+    decimal price;
+    while(!Validator.IsValidDecimal(Console.ReadLine(), out price))
     {
         PrintMsg("Price", "it must be dig");
     }
@@ -173,12 +173,15 @@ Order CreateOrder()
     
 
             Order newOrder = orderService.CreateOrder(
-                orderId,
-                description,
-                price,
-                delivery,
-                orderData,
-                address
+                new OrderInfo()
+                {
+                    Id = orderId,
+                    Description = description,
+                    Price = price,
+                    OrderDate = orderData,
+                    DeliveryType = delivery,
+                    Address = address
+                }
 
             );
 
