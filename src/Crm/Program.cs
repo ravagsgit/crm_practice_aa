@@ -1,6 +1,7 @@
 ﻿using Crm.Entities;
 using Crm.Services;
 using Crm.Validator;
+using Crm.Entities.DTOs;
 
 ClientService clientService = new();
 OrderService orderService = new();
@@ -23,7 +24,7 @@ switch(command)
         Console.WriteLine("Сlient was not created, unknown error");
         break;
     }
-    Console.WriteLine("Client was sucsesiful created");
+    Console.WriteLine("Client was successiful created");
             Console.WriteLine("Client FullName: " + client.FirstName+" " +client.LastName);
             Console.WriteLine("Client age: " + client.Age);
             Console.WriteLine("Passport Number: " + client.PassportNumber);
@@ -41,7 +42,7 @@ switch(command)
                 break;
             }
 
-            Console.WriteLine("Order was sucsesiful created");
+            Console.WriteLine("Order was successiful created");
             Console.WriteLine("Order description: " + order.Description);
             Console.WriteLine("Price: " + order.Price);
             Console.WriteLine("Delivery type: " + order.DeliveryType);
@@ -104,13 +105,19 @@ Client CreateClient()
     }
     Gender gender = (Gender)genNum;
 
+  
+
     Client newClient = clientService.CreateClient(
-        firstName,
-        lastName,
-        middleName,
-        age,
-        passportNumber,
-        gender
+        new ClientInfo()
+    {
+        FirstName = firstName,
+        LastName = lastName,
+        MiddleName = middleName,
+        Age = age,
+        PassportNumber = passportNumber,
+        ClientGender = gender
+         
+    }
     );
 
     return newClient;
@@ -134,8 +141,9 @@ Order CreateOrder()
         description = Console.ReadLine();
     }
 
-    int price;
-    while(!Validator.IsValidInt(Console.ReadLine(), out price))
+    PrintMsg("Price", "it must be dig");
+    decimal price;
+    while(!Validator.IsValidDecimal(Console.ReadLine(), out price))
     {
         PrintMsg("Price", "it must be dig");
     }
@@ -165,12 +173,15 @@ Order CreateOrder()
     
 
             Order newOrder = orderService.CreateOrder(
-                orderId,
-                description,
-                price,
-                delivery,
-                orderData,
-                address
+                new OrderInfo()
+                {
+                    Id = orderId,
+                    Description = description,
+                    Price = price,
+                    OrderDate = orderData,
+                    DeliveryType = delivery,
+                    Address = address
+                }
 
             );
 
@@ -178,7 +189,7 @@ Order CreateOrder()
     
         }
 
-        void PrintMsg(string msg, string? corrcetVers)
-        {
-            Console.WriteLine("Please, input correct "+msg+", "+corrcetVers);
-        }
+void PrintMsg(string msg, string? corrcetVers)
+{
+    Console.WriteLine("Please, input correct "+msg+", "+corrcetVers);
+}

@@ -1,4 +1,4 @@
-using System;
+using Crm.Entities.DTOs;
 using Crm.Entities;
 
 namespace Crm.Services
@@ -6,23 +6,16 @@ namespace Crm.Services
 
 public sealed class OrderService
 {
-    public Order CreateOrder(
-        int orderId,
-        string description,
-        int price,
-        Delivery delivery,
-        DateTime orderData,
-        string addres
-    )
+    public Order CreateOrder(OrderInfo orderInfo)
     {
         return new()
         {
-            OrderId = orderId,
-            Description = description,
-            Price = price,
-            DeliveryType = delivery,
-            OrderDate = orderData,
-            Address =addres
+            OrderId = orderInfo.Id,
+            Description = orderInfo.Description,
+            Price = orderInfo.Price,
+            DeliveryType = orderInfo.DeliveryType,
+            OrderDate = orderInfo.OrderDate,
+            Address =orderInfo.Address
         };
     }
 }
