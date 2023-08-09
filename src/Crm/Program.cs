@@ -23,7 +23,7 @@ switch(command)
         Console.WriteLine("Сlient was not created, unknown error");
         break;
     }
-    Console.WriteLine("Client was sucsesiful created");
+    Console.WriteLine("Client was successiful created");
             Console.WriteLine("Client FullName: " + client.FirstName+" " +client.LastName);
             Console.WriteLine("Client age: " + client.Age);
             Console.WriteLine("Passport Number: " + client.PassportNumber);
@@ -41,7 +41,7 @@ switch(command)
                 break;
             }
 
-            Console.WriteLine("Order was sucsesiful created");
+            Console.WriteLine("Order was successiful created");
             Console.WriteLine("Order description: " + order.Description);
             Console.WriteLine("Price: " + order.Price);
             Console.WriteLine("Delivery type: " + order.DeliveryType);
@@ -134,6 +134,7 @@ Order CreateOrder()
         description = Console.ReadLine();
     }
 
+    PrintMsg("Price", "it must be dig");
     int price;
     while(!Validator.IsValidInt(Console.ReadLine(), out price))
     {
