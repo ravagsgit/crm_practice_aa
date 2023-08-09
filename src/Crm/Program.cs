@@ -1,6 +1,7 @@
 ﻿using Crm.Entities;
 using Crm.Services;
 using Crm.Validator;
+using Crm.Entities.DTOs;
 
 ClientService clientService = new();
 OrderService orderService = new();
@@ -104,13 +105,19 @@ Client CreateClient()
     }
     Gender gender = (Gender)genNum;
 
+  
+
     Client newClient = clientService.CreateClient(
-        firstName,
-        lastName,
-        middleName,
-        age,
-        passportNumber,
-        gender
+        new ClientInfo()
+    {
+        FirstName = firstName,
+        LastName = lastName,
+        MiddleName = middleName,
+        Age = age,
+        PassportNumber = passportNumber,
+        ClientGender = gender
+         
+    }
     );
 
     return newClient;
@@ -179,7 +186,7 @@ Order CreateOrder()
     
         }
 
-        void PrintMsg(string msg, string? corrcetVers)
-        {
-            Console.WriteLine("Please, input correct "+msg+", "+corrcetVers);
-        }
+void PrintMsg(string msg, string? corrcetVers)
+{
+    Console.WriteLine("Please, input correct "+msg+", "+corrcetVers);
+}
