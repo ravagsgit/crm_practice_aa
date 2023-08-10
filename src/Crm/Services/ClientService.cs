@@ -4,7 +4,7 @@ using Crm.Entities.DTOs;
 namespace Crm.Services;
 public sealed class ClientService
 {
-    private List<Client> clients = new List<Client>();
+    private readonly List<Client> clients = new List<Client>();
     public Client CreateClient(ClientInfo clientInfo)
     {
         Client newClient =  new()
@@ -23,5 +23,20 @@ public sealed class ClientService
         clients.Add(newClient);
         Console.WriteLine("New client was created successiful and added to list.");
         return newClient;
+    }
+
+    public bool GetClient(string firstName, string lastName, out Client? client)
+    {
+        foreach(var clientItem in clients)
+        {
+            if(clientItem.FirstName.Equals(firstName) & clientItem.LastName.Equals(lastName))
+            {
+                client = clientItem;
+                return true;
+            }
+        }
+
+        client = null;
+        return true;
     }   
 }
