@@ -6,9 +6,10 @@ namespace Crm.Services
 
 public sealed class OrderService
 {
+    private readonly List<Order> orders = new List<Order>();
     public Order CreateOrder(OrderInfo orderInfo)
     {
-        return new()
+        Order newOrder = new()
         {
             OrderId = orderInfo.Id,
             Description = orderInfo.Description,
@@ -17,6 +18,26 @@ public sealed class OrderService
             OrderDate = orderInfo.OrderDate,
             Address =orderInfo.Address
         };
+        orders.Add(newOrder);
+        Console.WriteLine("New order was created successiful and added to list.");
+
+        return newOrder;
     }
+
+    public bool GetClient(int orderId, out Order? order)
+    {
+        foreach(var orderItem in orders)
+        {
+            if(orderItem.OrderId.Equals(orderId))
+            {
+                order = orderItem;
+                return true;
+            }
+        }
+
+        order = null;
+        return false;
+    }
+
 }
 }

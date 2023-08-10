@@ -37,6 +37,6 @@ public sealed class ClientService
         }
 
         client = null;
-        return true;
+        return false;
     }   
 }
