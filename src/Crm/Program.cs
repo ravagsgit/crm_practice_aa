@@ -105,6 +105,30 @@ Client CreateClient()
     }
     Gender gender = (Gender)genNum;
 
+    PrintMsg("Client phone", null);
+    string phone = Console.ReadLine();
+    while(!Validator.IsValidStr(phone))
+    {
+        PrintMsg("Client phone", null);
+        phone = Console.ReadLine();
+    }
+
+    PrintMsg("Client E-mail", null);
+    string email = Console.ReadLine();
+    while(!Validator.IsValidStr(email))
+    {
+        PrintMsg("Client E-mail", null);
+        email = Console.ReadLine();
+    }
+
+    PrintMsg("Client password", null);
+    string password = Console.ReadLine();
+    while(!Validator.IsValidStr(password))
+    {
+        PrintMsg("Client password", null);
+        password = Console.ReadLine();
+    }
+
   
 
     Client newClient = clientService.CreateClient(
@@ -115,7 +139,10 @@ Client CreateClient()
         MiddleName = middleName,
         Age = age,
         PassportNumber = passportNumber,
-        ClientGender = gender
+        ClientGender = gender,
+        Phone = phone,
+        Email = email,
+        Password = password
          
     }
     );
