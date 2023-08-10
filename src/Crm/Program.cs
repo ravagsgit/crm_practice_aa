@@ -45,8 +45,8 @@ switch(command)
             Console.WriteLine("Order was successiful created");
             Console.WriteLine("Order description: " + order.Description);
             Console.WriteLine("Price: " + order.Price);
-            Console.WriteLine("Delivery type: " + order.DeliveryType);
-            Console.WriteLine("Order date: " + order.OrderDate.ToString("yyyy-MM-dd"));
+            Console.WriteLine("Delivery type: " + order.Delivery);
+            Console.WriteLine("Order date: " + order.OrderDate?.ToString("yyyy-MM-dd"));
             Console.WriteLine("Address delivery: " + order.Address);
 
             break;
