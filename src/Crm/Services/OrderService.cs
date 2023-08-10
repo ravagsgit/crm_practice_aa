@@ -7,6 +7,11 @@ namespace Crm.Services
 public sealed class OrderService
 {
     private readonly List<Order> orders = new List<Order>();
+    /// <summary>
+    /// Create Order
+    /// </summary>
+    /// <param name="orderInfo"></param>
+    /// <returns></returns>
     public Order CreateOrder(OrderInfo orderInfo)
     {
         Order newOrder = new()
@@ -24,11 +29,38 @@ public sealed class OrderService
         return newOrder;
     }
 
-    public bool GetClient(int orderId, out Order? order)
+    /// <summary>
+    /// Return Order by Id
+    /// </summary>
+    /// <param name="orderId"></param>
+    /// <param name="order"></param>
+    /// <returns></returns>
+    public bool GetOrder(int orderId, out Order? order)
     {
         foreach(var orderItem in orders)
         {
             if(orderItem.OrderId.Equals(orderId))
+            {
+                order = orderItem;
+                return true;
+            }
+        }
+
+        order = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Return Order by description
+    /// </summary>
+    /// <param name="description"></param>
+    /// <param name="order"></param>
+    /// <returns></returns>
+    public bool GetOrder(string description, out Order? order)
+    {
+        foreach(var orderItem in orders)
+        {
+            if(orderItem.Description.Equals(description))
             {
                 order = orderItem;
                 return true;
