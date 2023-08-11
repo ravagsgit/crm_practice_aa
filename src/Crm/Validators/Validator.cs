@@ -120,7 +120,17 @@ public static class Validator
             return false;
         }
 
-        if (!deliverTypeString.Equals("1") & !deliverTypeString.Equals("2") & !deliverTypeString.Equals("3"))
+        if (!deliverTypeString.Equals("1"))
+        {
+            return false;
+        }
+
+        if(!deliverTypeString.Equals("2"))
+        {
+            return false;
+        }
+
+        if(!deliverTypeString.Equals("3"))
         {
             return false;
         }
