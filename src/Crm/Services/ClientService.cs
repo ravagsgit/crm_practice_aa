@@ -5,6 +5,11 @@ namespace Crm.Services;
 public sealed class ClientService
 {
     private readonly List<Client> clients = new List<Client>();
+    /// <summary>
+    /// Create client
+    /// </summary>
+    /// <param name="clientInfo"></param>
+    /// <returns></returns>
     public Client CreateClient(ClientInfo clientInfo)
     {
         Client newClient =  new()
@@ -25,6 +30,13 @@ public sealed class ClientService
         return newClient;
     }
 
+    /// <summary>
+    /// Return Client by Firstname and LastName
+    /// </summary>
+    /// <param name="firstName"></param>
+    /// <param name="lastName"></param>
+    /// <param name="client"></param>
+    /// <returns></returns>
     public bool GetClient(string firstName, string lastName, out Client? client)
     {
         foreach(var clientItem in clients)
