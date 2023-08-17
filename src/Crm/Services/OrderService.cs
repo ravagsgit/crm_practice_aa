@@ -6,7 +6,7 @@ namespace Crm.Services
 
 public sealed class OrderService
 {
-    private readonly List<Order> orders = new List<Order>();
+    private readonly List<Order> _orders = new List<Order>();
     /// <summary>
     /// Create Order
     /// </summary>
@@ -23,7 +23,7 @@ public sealed class OrderService
             OrderDate = orderInfo.OrderDate,
             Address =orderInfo.Address
         };
-        orders.Add(newOrder);
+        _orders.Add(newOrder);
         Console.WriteLine("New order was created successiful and added to list.");
 
         return newOrder;
@@ -37,7 +37,7 @@ public sealed class OrderService
     /// <returns></returns>
     public bool GetOrder(int orderId, out Order? order)
     {
-        foreach(var orderItem in orders)
+        foreach(var orderItem in _orders)
         {
             if(orderItem.OrderId.Equals(orderId))
             {
@@ -58,7 +58,7 @@ public sealed class OrderService
     /// <returns></returns>
     public bool GetOrder(string description, out Order? order)
     {
-        foreach(var orderItem in orders)
+        foreach(var orderItem in _orders)
         {
             if(orderItem.Description.Equals(description))
             {
@@ -70,6 +70,11 @@ public sealed class OrderService
         order = null;
         return false;
     }
+
+    public bool IsOrderListNotEmpty()
+    {
+        return _orders.Count>0;
+    } 
 
 }
 }

@@ -138,5 +138,45 @@ public static class Validator
         return true;
     }
 
+    public static bool IsValidCommand(string? commandTypeString, out short commandTypeNumber)
+    {
+        if (!short.TryParse(commandTypeString, out commandTypeNumber))
+        {
+            return false;
+        }
+
+        if(commandTypeNumber<0 || commandTypeNumber >5)
+        {
+            return false;
+        }
+
+       /* if (!commandTypeString.Equals("1"))
+        {
+            return false;
+        }
+
+        if(!commandTypeString.Equals("2"))
+        {
+            return false;
+        }
+
+        if(!commandTypeString.Equals("3"))
+        {
+            return false;
+        }
+
+        if(!commandTypeString.Equals("4"))
+        {
+            return false;
+        }
+
+        if(!commandTypeString.Equals("5"))
+        {
+            return false;
+        }*/
+
+        return true;
+    }
+
     
 }
