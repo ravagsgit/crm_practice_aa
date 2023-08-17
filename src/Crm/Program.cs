@@ -2,19 +2,19 @@
 using Crm.Services;
 using Crm.Validator;
 using Crm.Entities.DTOs;
+using System.ComponentModel;
+using System;
 
 ClientService clientService = new();
 OrderService orderService = new();
 
-Console.WriteLine("Hello, you can input next command: \n\t1 - for creating Clint; \n\t2 - for creating Order;");
-int iputedCmdNum;
+StartProgramm();
 
-while (!int.TryParse(Console.ReadLine(), out iputedCmdNum))
+void StartProgramm()
 {
-    Console.WriteLine("Please, enter correct command: \n\t1 - for creating Clint; \n\t2 - for creating Order;");
-}
-
-var command = (Command)iputedCmdNum;
+var command = GetCommand();
+while(command != Command.Exit)
+{
 switch(command)
 {
     case Command.CreateClient:
@@ -24,13 +24,10 @@ switch(command)
         Console.WriteLine("Сlient was not created, unknown error");
         break;
     }
-    Console.WriteLine("Client was successiful created");
-            Console.WriteLine("Client FullName: " + client.FirstName+" " +client.LastName);
-            Console.WriteLine("Client age: " + client.Age);
-            Console.WriteLine("Passport Number: " + client.PassportNumber);
-            Console.WriteLine("Gender: " + client.Gender);
 
-        break;
+    Console.WriteLine("Client was successiful created");
+    PrintClient(client);
+    break;
 
     case Command.CreateOrder:
 
@@ -43,17 +40,93 @@ switch(command)
             }
 
             Console.WriteLine("Order was successiful created");
-            Console.WriteLine("Order description: " + order.Description);
-            Console.WriteLine("Price: " + order.Price);
-            Console.WriteLine("Delivery type: " + order.Delivery);
-            Console.WriteLine("Order date: " + order.OrderDate?.ToString("yyyy-MM-dd"));
-            Console.WriteLine("Address delivery: " + order.Address);
-
+            PrintOrder(order);
             break;
+    
+    case Command.FindClient:
+    if(!clientService.IsClientListNotEmpty())
+    {
+        Console.WriteLine("Please, create and add client and then serch it");
+        break;
+    }
+    
+    Console.WriteLine("Please, enter client first name:");
+    string clientFirstName = Console.ReadLine();
+    Console.WriteLine("Please, enter client last name:");
+    string clientLastName = Console.ReadLine();
+    Client? clientFound =null;
+     if(clientService.GetClient(clientFirstName,clientLastName,out clientFound))
+     {
+        PrintClient(clientFound);
+        break;
+     }
+     else
+     {
+        Console.WriteLine("Client with ths Fitsname and Lastname not found");
+        break;
+     }
+
+     case Command.FindOrderById:
+     if(!orderService.IsOrderListNotEmpty())
+    {
+        Console.WriteLine("Please, create and add order and then serch it");
+        break;
+    }
+    Console.WriteLine("Please, enter order ID:");
+    int orderID;
+    while(Validator.IsValidInt(Console.ReadLine(), out orderID))
+    {
+        PrintMsg("Order Id", null);
+    }
+    
+    Order? orderFound =null;
+     if(orderService.GetOrder(orderID,out orderFound))
+     {
+        PrintOrder(orderFound);
+        break;
+     }
+     else
+     {
+        Console.WriteLine("Order with ths Id not found");
+        break;
+     }
+
+     case Command.FindOrderByDescription:
+     if(!orderService.IsOrderListNotEmpty())
+    {
+        Console.WriteLine("Please, create and add order and then serch it");
+        break;
+    }
+    Console.WriteLine("Please, enter order Description:");
+    string orderDescription = Console.ReadLine();
+    while(Validator.IsValidStr(orderDescription))
+    {
+        PrintMsg("Order Description", null);
+        orderDescription = Console.ReadLine();
+    }
+    
+    Order? orderFoundByDescription =null;
+     if(orderService.GetOrder(orderDescription,out orderFoundByDescription))
+     {
+        PrintOrder(orderFoundByDescription);
+        break;
+     }
+     else
+     {
+        Console.WriteLine("Order with ths Description not found");
+        break;
+     }
+
+    
         default:
             Console.WriteLine("Unknown error!");
             break;
 
+}
+
+command = GetCommand();
+
+}
 }
 
 Client CreateClient()
@@ -219,4 +292,46 @@ Order CreateOrder()
 void PrintMsg(string msg, string? corrcetVers)
 {
     Console.WriteLine("Please, input correct "+msg+", "+corrcetVers);
+}
+
+void PrintCommands()
+{
+    Console.WriteLine("Please, enter correct command:");
+    Console.WriteLine(" 0 - Exit from application;");
+    Console.WriteLine(" 1 - for creating Clint;");
+    Console.WriteLine(" 2 - for creating Order;");
+    Console.WriteLine(" 3 - find Client by Name and LastName;");
+    Console.WriteLine(" 4 - find Order by Id;");
+    Console.WriteLine(" 5 - find Order by Description;");
+}
+
+void PrintClient(Client client)
+{
+    
+            Console.WriteLine("Client FullName: " + client.FirstName+" " +client.LastName);
+            Console.WriteLine("Client age: " + client.Age);
+            Console.WriteLine("Passport Number: " + client.PassportNumber);
+            Console.WriteLine("Gender: " + client.Gender);
+}
+
+void PrintOrder(Order order)
+{
+            Console.WriteLine("Order description: " + order.Description);
+            Console.WriteLine("Price: " + order.Price);
+            Console.WriteLine("Delivery type: " + order.Delivery);
+            Console.WriteLine("Order date: " + order.OrderDate?.ToString("yyyy-MM-dd"));
+            Console.WriteLine("Address delivery: " + order.Address);
+}
+
+Command GetCommand()
+{
+    PrintCommands();
+short iputedCmdNum;
+
+while (!Validator.IsValidCommand(Console.ReadLine(), out iputedCmdNum))
+{
+    PrintCommands();
+}
+
+return(Command)iputedCmdNum;
 }

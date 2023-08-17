@@ -120,10 +120,60 @@ public static class Validator
             return false;
         }
 
-        if (!deliverTypeString.Equals("1") & !deliverTypeString.Equals("2") & !deliverTypeString.Equals("3"))
+        if (!deliverTypeString.Equals("1"))
         {
             return false;
         }
+
+        if(!deliverTypeString.Equals("2"))
+        {
+            return false;
+        }
+
+        if(!deliverTypeString.Equals("3"))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public static bool IsValidCommand(string? commandTypeString, out short commandTypeNumber)
+    {
+        if (!short.TryParse(commandTypeString, out commandTypeNumber))
+        {
+            return false;
+        }
+
+        if(commandTypeNumber<0 || commandTypeNumber >5)
+        {
+            return false;
+        }
+
+       /* if (!commandTypeString.Equals("1"))
+        {
+            return false;
+        }
+
+        if(!commandTypeString.Equals("2"))
+        {
+            return false;
+        }
+
+        if(!commandTypeString.Equals("3"))
+        {
+            return false;
+        }
+
+        if(!commandTypeString.Equals("4"))
+        {
+            return false;
+        }
+
+        if(!commandTypeString.Equals("5"))
+        {
+            return false;
+        }*/
 
         return true;
     }
