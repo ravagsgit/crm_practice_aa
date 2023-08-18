@@ -1,8 +1,9 @@
 using Crm.Entities;
 using Crm.Entities.DTOs;
+using Crm.Interfaces;
 
 namespace Crm.Services;
-public sealed class ClientService
+public sealed class ClientService: IClientService
 {
     private readonly List<Client> _clients = new List<Client>();
     /// <summary>
