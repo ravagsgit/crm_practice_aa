@@ -1,10 +1,11 @@
 using Crm.Entities.DTOs;
 using Crm.Entities;
+using Crm.interfaces;
 
 namespace Crm.Services
 {
 
-public sealed class OrderService
+public sealed class OrderService: IOrderService
 {
     private readonly List<Order> _orders = new List<Order>();
     /// <summary>
