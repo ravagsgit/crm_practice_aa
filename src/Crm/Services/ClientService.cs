@@ -58,5 +58,20 @@ public sealed class ClientService: IClientService
         return _clients.Count>0;
     }
 
+
+    public bool EditClient(string firstName, string lastName, string newFirstname, string newLastname)
+    {
+        Client client=null;
+        if(GetClient(firstName,lastName,out client))
+        {
+            client.FirstName = newFirstname;
+            client.LastName = newLastname;
+            return true;
+
+        }
+
+        return false;
+
+    }
      
 }
