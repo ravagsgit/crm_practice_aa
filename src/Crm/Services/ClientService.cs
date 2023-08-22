@@ -52,6 +52,20 @@ public sealed class ClientService: IClientService
         client = null;
         return false;
     } 
+    public Client GetClient(string firstName, string lastName)
+    {
+        //Client client = null;
+        foreach(var clientItem in _clients)
+        {
+            if(clientItem.FirstName.Equals(firstName) & clientItem.LastName.Equals(lastName))
+            {
+                return clientItem;
+            }
+        }
+        
+        return null;
+    } 
+
 
     public bool IsClientListNotEmpty()
     {
@@ -61,7 +75,7 @@ public sealed class ClientService: IClientService
 
     public bool EditClient(string firstName, string lastName, string newFirstname, string newLastname)
     {
-        Client client=null;
+        Client? client=null;
         if(GetClient(firstName,lastName,out client))
         {
             client.FirstName = newFirstname;
@@ -73,5 +87,14 @@ public sealed class ClientService: IClientService
         return false;
 
     }
+
+    public void EditClient(string newFirstname, string newLastname, Client client)
+    {
+            client.FirstName = newFirstname;
+            client.LastName = newLastname;
+
+    }
+
+    
      
 }

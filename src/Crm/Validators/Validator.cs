@@ -145,7 +145,7 @@ public static class Validator
             return false;
         }
 
-        if(commandTypeNumber<0 || commandTypeNumber >5)
+        if(commandTypeNumber<0 || commandTypeNumber >9)
         {
             return false;
         }

@@ -66,7 +66,7 @@ switch(command)
         break;
      }
 
-     case Command.FindOrderById:
+    case Command.FindOrderById:
      if(!orderService.IsOrderListNotEmpty())
     {
         Console.WriteLine("Please, create and add order and then serch it");
@@ -91,7 +91,7 @@ switch(command)
         break;
      }
 
-     case Command.FindOrderByDescription:
+    case Command.FindOrderByDescription:
      if(!orderService.IsOrderListNotEmpty())
     {
         Console.WriteLine("Please, create and add order and then serch it");
@@ -117,8 +117,35 @@ switch(command)
         break;
      }
 
+    case Command.ChangeClientName:
+    if(!clientService.IsClientListNotEmpty())
+    {
+        Console.WriteLine("ClientList is empty.");
+        break;
+    }
+
+    Console.WriteLine("Please, enter client firstname:");
+    clientFirstName = Console.ReadLine();
+    Console.WriteLine("Please, enter client lastname:");
+    clientLastName = Console.ReadLine();
+    if(clientService.GetClient(clientFirstName,clientLastName,out clientFound))
+     {
+        Console.WriteLine("Please, enter client new firstname:");
+        string newClientFirstName = Console.ReadLine();
+        Console.WriteLine("Please, enter client new lastname:");
+        string newClientLastName = Console.ReadLine();
+        clientService.EditClient(newClientFirstName,newClientLastName,clientFound);
+        Console.WriteLine("Client was edited:");
+        PrintClient(clientFound);
+        break;
+     }
+     else
+     {
+        Console.WriteLine("Client with ths Fitsname and Lastname not found");
+        break;
+     }
     
-        default:
+    default:
             Console.WriteLine("Unknown error!");
             break;
 
@@ -303,6 +330,7 @@ void PrintCommands()
     Console.WriteLine(" 3 - find Client by Name and LastName;");
     Console.WriteLine(" 4 - find Order by Id;");
     Console.WriteLine(" 5 - find Order by Description;");
+    Console.WriteLine(" 6 - edit Client by firstName and LastName;");
 }
 
 void PrintClient(Client client)
