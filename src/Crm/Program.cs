@@ -145,6 +145,14 @@ switch(command)
         break;
      }
     
+    case Command.RemoveClient:
+    Console.WriteLine("Please, enter client firstname:");
+    clientFirstName = Console.ReadLine();
+    Console.WriteLine("Please, enter client lastname:");
+    clientLastName = Console.ReadLine();
+    clientService.RemoveClient(clientFirstName,clientLastName);
+    break;
+    
     default:
             Console.WriteLine("Unknown error!");
             break;
@@ -331,6 +339,7 @@ void PrintCommands()
     Console.WriteLine(" 4 - find Order by Id;");
     Console.WriteLine(" 5 - find Order by Description;");
     Console.WriteLine(" 6 - edit Client by firstName and LastName;");
+    Console.WriteLine(" 7 - remove Client by firstName and LastName;");
 }
 
 void PrintClient(Client client)

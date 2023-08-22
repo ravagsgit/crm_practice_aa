@@ -37,7 +37,7 @@ public sealed class ClientService: IClientService
     /// <param name="firstName"></param>
     /// <param name="lastName"></param>
     /// <param name="client"></param>
-    /// <returns></returns>
+    /// <returns>Return bool value</returns>
     public bool GetClient(string firstName, string lastName, out Client? client)
     {
         foreach(var clientItem in _clients)
@@ -52,6 +52,12 @@ public sealed class ClientService: IClientService
         client = null;
         return false;
     } 
+    /// <summary>
+    /// Return Client by Firstname and LastName
+    /// </summary>
+    /// <param name="firstName"></param>
+    /// <param name="lastName"></param>
+    /// <returns>Return Client type</returns>
     public Client GetClient(string firstName, string lastName)
     {
         //Client client = null;
@@ -66,7 +72,10 @@ public sealed class ClientService: IClientService
         return null;
     } 
 
-
+    /// <summary>
+    /// For checking client list is empty or not.
+    /// </summary>
+    /// <returns>Bool value</returns>
     public bool IsClientListNotEmpty()
     {
         return _clients.Count>0;
@@ -95,6 +104,30 @@ public sealed class ClientService: IClientService
 
     }
 
-    
+    /// <summary>
+    /// For removing client form client list
+    /// </summary>
+    /// <param name="firstName"></param>
+    /// <param name="lastName"></param>
+    public void RemoveClient(string firstName, string lastName)
+    {
+        if(IsClientListNotEmpty())
+        {
+            Client removClient=null;
+            if(GetClient(firstName,lastName,out removClient))
+            {
+            _clients.Remove(removClient);
+            Console.WriteLine("Client was successiful removed.");
+            }
+            else
+            {
+                Console.WriteLine("Error. Clinet with same firsname and lastname is not found");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Error. Client list is empty.");
+        }
+    }
      
 }
