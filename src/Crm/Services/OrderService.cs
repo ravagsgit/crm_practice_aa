@@ -72,6 +72,58 @@ public sealed class OrderService: IOrderService
         return false;
     }
 
+
+    /// <summary>
+    /// For editing order via description
+    /// </summary>
+    /// <param name="description"></param>
+    /// <param name="newDescription"></param>
+    public void EditOrder(string description, string newDescription)
+    {
+        Order order = null;
+        GetOrder(description,out order);
+        order.Description = newDescription;
+        
+    }
+
+    /// <summary>
+    /// For editing order via Id
+    /// </summary>
+    /// <param name="orderId"></param>
+    /// <param name="newDescription"></param>
+    public void EditOrder(int orderId, string newDescription)
+    {
+        Order order = null;
+        GetOrder(orderId,out order);
+        order.Description = newDescription;
+        
+    }
+
+    /// <summary>
+    /// Removing order by Id
+    /// </summary>
+    /// <param name="orderId"></param>
+    public void RemoveOrder(int orderId)
+    {
+        Order order = null;
+        GetOrder(orderId,out order);
+        _orders.Remove(order);       
+        
+    }
+
+    /// <summary>
+    /// Remove order by descriprion
+    /// </summary>
+    /// <param name="orderDescriprion"></param>
+    public void RemoveOrder(string orderDescriprion)
+    {
+        Order order = null;
+        GetOrder(orderDescriprion,out order);
+        _orders.Remove(order);       
+        
+    }
+    
+
     public bool IsOrderListNotEmpty()
     {
         return _orders.Count>0;

@@ -152,6 +152,14 @@ switch(command)
     clientLastName = Console.ReadLine();
     clientService.RemoveClient(clientFirstName,clientLastName);
     break;
+
+    case Command.EditingOrderDescription:
+    Console.WriteLine("Please, enter orderDescriprion:");
+    orderDescription = Console.ReadLine();
+    Console.WriteLine("Please, enter orderDescriprion:");
+    string newOrderDescription = Console.ReadLine();
+    orderService.EditOrder(orderDescription, newOrderDescription);
+    break;
     
     default:
             Console.WriteLine("Unknown error!");
@@ -324,7 +332,7 @@ Order CreateOrder()
     
         }
 
-        void PrintMsg(string msg, string? corrcetVers)
+void PrintMsg(string msg, string? corrcetVers)
         {
             Console.WriteLine("Please, input correct "+msg+", "+corrcetVers);
         }
