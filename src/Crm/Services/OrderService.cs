@@ -78,11 +78,15 @@ public sealed class OrderService: IOrderService
     /// </summary>
     /// <param name="description"></param>
     /// <param name="newDescription"></param>
-    public void EditOrder(string description, string newDescription)
+    public bool EditOrder(string description, string newDescription, out Order? order)
     {
-        Order order = null;
-        GetOrder(description,out order);
-        order.Description = newDescription;
+        //Order order = null;
+        bool result = GetOrder(description,out order);
+        if(result)
+        {
+            order.Description = newDescription;
+        }
+        return result;
         
     }
 
@@ -91,11 +95,15 @@ public sealed class OrderService: IOrderService
     /// </summary>
     /// <param name="orderId"></param>
     /// <param name="newDescription"></param>
-    public void EditOrder(int orderId, string newDescription)
+    public bool EditOrder(int orderId, string newDescription, out Order? order)
     {
-        Order order = null;
-        GetOrder(orderId,out order);
-        order.Description = newDescription;
+        //Order order = null;
+        bool result = GetOrder(orderId,out order);
+        if(result)
+        {
+            order.Description = newDescription;
+        }
+        return result;
         
     }
 
@@ -103,11 +111,13 @@ public sealed class OrderService: IOrderService
     /// Removing order by Id
     /// </summary>
     /// <param name="orderId"></param>
-    public void RemoveOrder(int orderId)
+    public bool RemoveOrder(int orderId)
     {
         Order order = null;
-        GetOrder(orderId,out order);
-        _orders.Remove(order);       
+        bool result = GetOrder(orderId,out order);
+        if(result)
+        _orders.Remove(order);  
+        return result;     
         
     }
 
@@ -115,11 +125,13 @@ public sealed class OrderService: IOrderService
     /// Remove order by descriprion
     /// </summary>
     /// <param name="orderDescriprion"></param>
-    public void RemoveOrder(string orderDescriprion)
+    public bool RemoveOrder(string orderDescriprion)
     {
         Order order = null;
-        GetOrder(orderDescriprion,out order);
-        _orders.Remove(order);       
+        bool result = GetOrder(orderDescriprion,out order);
+        if(result)
+        _orders.Remove(order);  
+        return result;        
         
     }
     

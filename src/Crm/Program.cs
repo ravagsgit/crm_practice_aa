@@ -74,7 +74,7 @@ switch(command)
     }
     Console.WriteLine("Please, enter order ID:");
     int orderID;
-    while(Validator.IsValidInt(Console.ReadLine(), out orderID))
+    while(!Validator.IsValidInt(Console.ReadLine(), out orderID))
     {
         PrintMsg("Order Id", null);
     }
@@ -156,9 +156,40 @@ switch(command)
     case Command.EditingOrderDescription:
     Console.WriteLine("Please, enter orderDescriprion:");
     orderDescription = Console.ReadLine();
-    Console.WriteLine("Please, enter orderDescriprion:");
+    while(!Validator.IsValidStr(orderDescription))
+    {
+        PrintMsg("Order Description", null);
+        orderDescription = Console.ReadLine();
+    }
+    Console.WriteLine("Please, enter new orderDescriprion:");
     string newOrderDescription = Console.ReadLine();
-    orderService.EditOrder(orderDescription, newOrderDescription);
+    while(!Validator.IsValidStr(orderDescription))
+    {
+        PrintMsg("Order Description", null);
+        newOrderDescription = Console.ReadLine();
+    }
+    Order editedOrder =null;
+    if(orderService.EditOrder(orderDescription, newOrderDescription, out editedOrder))
+    {
+        Console.WriteLine("Order was successiful edited.");
+        PrintOrder(editedOrder);
+    }
+    else
+    {
+        Console.WriteLine("Order wiht this description not found.");
+    }   
+    break;
+
+    case Command.RemoveOrder:
+    Console.WriteLine("Please, enter orderId for removing it from list:");
+    if(!Validator.IsValidInt(Console.ReadLine(),out orderID))
+    {
+        Console.WriteLine("Plese, enter correct order ID");
+    }
+    if(orderService.RemoveOrder(orderID))
+        Console.WriteLine("Order was successiful removed.");
+    else
+        Console.WriteLine("Order wiht this Id not found.");    
     break;
     
     default:
@@ -348,6 +379,8 @@ void PrintCommands()
     Console.WriteLine(" 5 - find Order by Description;");
     Console.WriteLine(" 6 - edit Client by firstName and LastName;");
     Console.WriteLine(" 7 - remove Client by firstName and LastName;");
+    Console.WriteLine(" 8 - edit order by Id;");
+    Console.WriteLine(" 9 - remove order by Id;");
 }
 
 void PrintClient(Client client)

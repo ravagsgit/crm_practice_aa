@@ -120,7 +120,13 @@ public static class Validator
             return false;
         }
 
-        if (!deliverTypeString.Equals("1"))
+        if(deliverTypeNumber<0 | deliverTypeNumber >3)
+        {
+            return false;
+        }
+
+/*
+        if (!deliverTypeNumber.Equals(1)) // deliverTypeString.Equals("1"))
         {
             return false;
         }
@@ -134,6 +140,7 @@ public static class Validator
         {
             return false;
         }
+        */
 
         return true;
     }

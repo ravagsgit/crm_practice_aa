@@ -82,6 +82,14 @@ public sealed class ClientService: IClientService
     }
 
 
+    /// <summary>
+    /// Edit client firstName and lastName
+    /// </summary>
+    /// <param name="firstName"></param>
+    /// <param name="lastName"></param>
+    /// <param name="newFirstname"></param>
+    /// <param name="newLastname"></param>
+    /// <returns>Return bool</returns>
     public bool EditClient(string firstName, string lastName, string newFirstname, string newLastname)
     {
         Client? client=null;

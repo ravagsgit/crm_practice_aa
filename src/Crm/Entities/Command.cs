@@ -21,7 +21,7 @@ public enum Command
     RemoveClient = 7,
     [Description("For editing order description")]
     EditingOrderDescription = 8,
-    [Description("Removing order")]
+    [Description("Removing order by Id")]
     RemoveOrder = 9,
 
 }
