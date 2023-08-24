@@ -14,5 +14,14 @@ public enum Command
     [Description("Find Order by Id")]
     FindOrderById = 4,
     [Description("Find Order by Description")]
-    FindOrderByDescription = 5
+    FindOrderByDescription = 5,
+    [Description("For editing client Firsname and Lastname")]
+    ChangeClientName = 6,
+    [Description("For removeing client")]
+    RemoveClient = 7,
+    [Description("For editing order description")]
+    EditingOrderDescription = 8,
+    [Description("Removing order by Id")]
+    RemoveOrder = 9,
+
 }

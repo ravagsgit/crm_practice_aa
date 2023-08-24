@@ -2,8 +2,8 @@ namespace Crm.Entities;
 
 public sealed class Client
 {
-    private readonly string? _firstName;
-    private readonly string? _lastName;
+    private string? _firstName;
+    private string? _lastName;
     private string? _middleName;
     private short _age;
     private readonly string? _passportNumber;
@@ -15,13 +15,14 @@ public sealed class Client
     public required string FirstName
     {
         get => _firstName ?? string.Empty;
-        init => _firstName = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
+        set => _firstName = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
+        //set => _firstName = value;
     }
 
     public required string LastName
     {
         get => _lastName ?? string.Empty;
-        init => _lastName = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
+        set => _lastName = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
 
     public string? MiddleName

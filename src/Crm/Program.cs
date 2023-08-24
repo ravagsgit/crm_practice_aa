@@ -66,7 +66,7 @@ switch(command)
         break;
      }
 
-     case Command.FindOrderById:
+    case Command.FindOrderById:
      if(!orderService.IsOrderListNotEmpty())
     {
         Console.WriteLine("Please, create and add order and then serch it");
@@ -74,7 +74,7 @@ switch(command)
     }
     Console.WriteLine("Please, enter order ID:");
     int orderID;
-    while(Validator.IsValidInt(Console.ReadLine(), out orderID))
+    while(!Validator.IsValidInt(Console.ReadLine(), out orderID))
     {
         PrintMsg("Order Id", null);
     }
@@ -91,7 +91,7 @@ switch(command)
         break;
      }
 
-     case Command.FindOrderByDescription:
+    case Command.FindOrderByDescription:
      if(!orderService.IsOrderListNotEmpty())
     {
         Console.WriteLine("Please, create and add order and then serch it");
@@ -117,8 +117,82 @@ switch(command)
         break;
      }
 
+    case Command.ChangeClientName:
+    if(!clientService.IsClientListNotEmpty())
+    {
+        Console.WriteLine("ClientList is empty.");
+        break;
+    }
+
+    Console.WriteLine("Please, enter client firstname:");
+    clientFirstName = Console.ReadLine();
+    Console.WriteLine("Please, enter client lastname:");
+    clientLastName = Console.ReadLine();
+    if(clientService.GetClient(clientFirstName,clientLastName,out clientFound))
+     {
+        Console.WriteLine("Please, enter client new firstname:");
+        string newClientFirstName = Console.ReadLine();
+        Console.WriteLine("Please, enter client new lastname:");
+        string newClientLastName = Console.ReadLine();
+        clientService.EditClient(newClientFirstName,newClientLastName,clientFound);
+        Console.WriteLine("Client was edited:");
+        PrintClient(clientFound);
+        break;
+     }
+     else
+     {
+        Console.WriteLine("Client with ths Fitsname and Lastname not found");
+        break;
+     }
     
-        default:
+    case Command.RemoveClient:
+    Console.WriteLine("Please, enter client firstname:");
+    clientFirstName = Console.ReadLine();
+    Console.WriteLine("Please, enter client lastname:");
+    clientLastName = Console.ReadLine();
+    clientService.RemoveClient(clientFirstName,clientLastName);
+    break;
+
+    case Command.EditingOrderDescription:
+    Console.WriteLine("Please, enter orderDescriprion:");
+    orderDescription = Console.ReadLine();
+    while(!Validator.IsValidStr(orderDescription))
+    {
+        PrintMsg("Order Description", null);
+        orderDescription = Console.ReadLine();
+    }
+    Console.WriteLine("Please, enter new orderDescriprion:");
+    string newOrderDescription = Console.ReadLine();
+    while(!Validator.IsValidStr(orderDescription))
+    {
+        PrintMsg("Order Description", null);
+        newOrderDescription = Console.ReadLine();
+    }
+    Order editedOrder =null;
+    if(orderService.EditOrder(orderDescription, newOrderDescription, out editedOrder))
+    {
+        Console.WriteLine("Order was successiful edited.");
+        PrintOrder(editedOrder);
+    }
+    else
+    {
+        Console.WriteLine("Order wiht this description not found.");
+    }   
+    break;
+
+    case Command.RemoveOrder:
+    Console.WriteLine("Please, enter orderId for removing it from list:");
+    if(!Validator.IsValidInt(Console.ReadLine(),out orderID))
+    {
+        Console.WriteLine("Plese, enter correct order ID");
+    }
+    if(orderService.RemoveOrder(orderID))
+        Console.WriteLine("Order was successiful removed.");
+    else
+        Console.WriteLine("Order wiht this Id not found.");    
+    break;
+    
+    default:
             Console.WriteLine("Unknown error!");
             break;
 
@@ -289,7 +363,7 @@ Order CreateOrder()
     
         }
 
-        void PrintMsg(string msg, string? corrcetVers)
+void PrintMsg(string msg, string? corrcetVers)
         {
             Console.WriteLine("Please, input correct "+msg+", "+corrcetVers);
         }
@@ -303,6 +377,10 @@ void PrintCommands()
     Console.WriteLine(" 3 - find Client by Name and LastName;");
     Console.WriteLine(" 4 - find Order by Id;");
     Console.WriteLine(" 5 - find Order by Description;");
+    Console.WriteLine(" 6 - edit Client by firstName and LastName;");
+    Console.WriteLine(" 7 - remove Client by firstName and LastName;");
+    Console.WriteLine(" 8 - edit order by Id;");
+    Console.WriteLine(" 9 - remove order by Id;");
 }
 
 void PrintClient(Client client)
