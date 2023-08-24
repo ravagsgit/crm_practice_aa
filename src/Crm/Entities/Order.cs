@@ -3,7 +3,7 @@ namespace Crm.Entities
 {
 public sealed class Order
 {
-     private string? _description;
+    private string? _description;
     private decimal _price;
     private DateTime? _orderDate;
     private Delivery? _delivery;
@@ -14,7 +14,7 @@ public sealed class Order
     public required string Description
     {
         get => _description ?? string.Empty;
-        init => _description = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
+        set => _description = value is { Length: > 0 } ? value : throw new ArgumentOutOfRangeException(nameof(value));
     }
 
     public required decimal Price
