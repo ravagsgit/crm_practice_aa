@@ -308,7 +308,7 @@ Order CreateOrder()
     }
 
     PrintMsg("Order description", null);
-    string description = Console.ReadLine();
+    string? description = Console.ReadLine();
     while(!Validator.IsValidStr(description))
     {
         PrintMsg("Order description", null);
@@ -338,7 +338,7 @@ Order CreateOrder()
     }
     
     PrintMsg("Address delivery", null);
-    string address = Console.ReadLine();
+    string? address = Console.ReadLine();
     while(!Validator.IsValidStr(address))
     {
         PrintMsg("Address delivery", null);
