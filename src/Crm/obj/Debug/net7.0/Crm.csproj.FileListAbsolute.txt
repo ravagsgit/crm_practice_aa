@@ -1,0 +1,15 @@
+C:\Users\Admin\Desktop\dotnetAcademy\practic\CRM-PRACTICE_v2\src\Crm\bin\Debug\net7.0\Crm.exe
+C:\Users\Admin\Desktop\dotnetAcademy\practic\CRM-PRACTICE_v2\src\Crm\bin\Debug\net7.0\Crm.deps.json
+C:\Users\Admin\Desktop\dotnetAcademy\practic\CRM-PRACTICE_v2\src\Crm\bin\Debug\net7.0\Crm.runtimeconfig.json
+C:\Users\Admin\Desktop\dotnetAcademy\practic\CRM-PRACTICE_v2\src\Crm\bin\Debug\net7.0\Crm.dll
+C:\Users\Admin\Desktop\dotnetAcademy\practic\CRM-PRACTICE_v2\src\Crm\bin\Debug\net7.0\Crm.pdb
+C:\Users\Admin\Desktop\dotnetAcademy\practic\CRM-PRACTICE_v2\src\Crm\obj\Debug\net7.0\Crm.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\dotnetAcademy\practic\CRM-PRACTICE_v2\src\Crm\obj\Debug\net7.0\Crm.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\dotnetAcademy\practic\CRM-PRACTICE_v2\src\Crm\obj\Debug\net7.0\Crm.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\dotnetAcademy\practic\CRM-PRACTICE_v2\src\Crm\obj\Debug\net7.0\Crm.AssemblyInfo.cs
+C:\Users\Admin\Desktop\dotnetAcademy\practic\CRM-PRACTICE_v2\src\Crm\obj\Debug\net7.0\Crm.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\dotnetAcademy\practic\CRM-PRACTICE_v2\src\Crm\obj\Debug\net7.0\Crm.dll
+C:\Users\Admin\Desktop\dotnetAcademy\practic\CRM-PRACTICE_v2\src\Crm\obj\Debug\net7.0\refint\Crm.dll
+C:\Users\Admin\Desktop\dotnetAcademy\practic\CRM-PRACTICE_v2\src\Crm\obj\Debug\net7.0\Crm.pdb
+C:\Users\Admin\Desktop\dotnetAcademy\practic\CRM-PRACTICE_v2\src\Crm\obj\Debug\net7.0\Crm.genruntimeconfig.cache
+C:\Users\Admin\Desktop\dotnetAcademy\practic\CRM-PRACTICE_v2\src\Crm\obj\Debug\net7.0\ref\Crm.dll
