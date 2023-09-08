@@ -1,11 +1,7 @@
-﻿using Crm.Entities;
-using Crm.Services;
+﻿using Crm;
 
 ClientService clientService = new();
 CreateClient();
-
-OrderService orderService = new();
-CreateOrder();
 
 void CreateClient()
 {
@@ -27,22 +23,3 @@ void CreateClient()
 
     // TODO: Output fields...
 }
-
-void CreateOrder()
-        {
-            int orderId = int.Parse(Console.ReadLine());
-            string description = Console.ReadLine();
-            int price = int.Parse(Console.ReadLine());
-            DateTime orderData = DateTime.Parse( Console.ReadLine());
-            string addres = Console.ReadLine();
-
-            Order newOrder = orderService.CreateOrder(
-                orderId,
-                description,
-                price,
-                orderData,
-                addres
-
-            );
-    
-        }

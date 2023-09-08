@@ -1,5 +1,4 @@
-using Crm.Services;
-using Crm.Entities;
+using Crm;
 
 public sealed class ClientService
 {
